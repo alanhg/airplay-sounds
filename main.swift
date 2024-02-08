@@ -11,7 +11,9 @@ class AirPlayBrowser: NSObject, NetServiceBrowserDelegate {
     }
 
     func netServiceBrowser(_ browser: NetServiceBrowser, didFind service: NetService, moreComing: Bool) {
-        print("Found AirPlay device: \(service.name)")
+    if !service.name.contains("Mac") {
+    print("\(service.name)")
+    }
         if !moreComing {
             netServiceBrowser.stop()
             exit(0)
